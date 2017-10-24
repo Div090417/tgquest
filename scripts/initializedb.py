@@ -15,7 +15,11 @@ from ..models import (
     get_session_factory,
     get_tm_session,
     )
-from ..models import MyModel
+from ..models import (
+    FirstLevel, SecondLevel, Offer,
+    Manager, User,
+    Session, Apilog, Message
+)
 
 
 def usage(argv):
@@ -40,6 +44,54 @@ def main(argv=sys.argv):
 
     with transaction.manager:
         dbsession = get_tm_session(session_factory, transaction.manager)
-
-        model = MyModel(name='one', value=1)
-        dbsession.add(model)
+        '''
+        admin = Manager(login='admin', name='First Admin', role='admin')
+        admin.set_password('aadminn')
+        dbsession.add(admin)
+        
+        msg = Message(cmd='/start', text='Welcome to Go Out Alfa test')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='/help', text='Some help')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='/back', text='Back is not available')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='noback', text='You cant go back from here')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='back', text='BACK command is not available')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='nomore', text='You cant get more')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='more', text='MORE command is not available')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='err062', text='err062')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='err067', text='err067')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='err075', text='err075')
+        dbsession.add(msg)
+        
+        msg = Message(cmd='err058', text='err058')
+        dbsession.add(msg)
+        
+        
+        
+        flvl = FirstLevel(cmd='cafe', name='Drink Cofee', text='cafe')
+        dbsession.add(flvl)
+        
+        flvl = FirstLevel(cmd='pub', name='Pick some Bear', text='bear')
+        dbsession.add(flvl)
+        
+        flvl = FirstLevel(cmd='restaraunt', name='Eat taste food', text='some food')
+        dbsession.add(flvl)
+        '''
+        
+        

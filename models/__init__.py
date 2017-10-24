@@ -5,7 +5,11 @@ import zope.sqlalchemy
 
 # import or define all models here to ensure they are attached to the
 # Base.metadata prior to any initialization routines
-from .mymodel import MyModel  # noqa
+#from .mymodel import MyModel  # noqa
+from .catsModels import FirstLevel, SecondLevel, Offer
+from .manageModels import Manager, User
+from .servModels import Session, Apilog, Message 
+
 
 # run configure_mappers after defining all of the models to ensure
 # all relationships can be setup
@@ -53,11 +57,10 @@ def includeme(config):
     """
     Initialize the model for a Pyramid app.
 
-    Activate this setup using ``config.include('iquests.models')``.
+    Activate this setup using ``config.include('gout-se.models')``.
 
     """
     settings = config.get_settings()
-    settings['tm.manager_hook'] = 'pyramid_tm.explicit_manager'
 
     # use pyramid_tm to hook the transaction lifecycle to the request
     config.include('pyramid_tm')

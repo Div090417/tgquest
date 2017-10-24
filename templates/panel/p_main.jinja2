@@ -1,0 +1,16 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+<div class="content">
+  <h1>{{view_name}}</h1>
+  <div>
+  <ul>
+    <li><a href="{{ request.route_url('panel_list', type='mes')}}">Messages</a></li>
+    <li><a href="{{ request.route_url('panel_list', type='frst')}}">First Level Cats</a></li>
+    <li><a href="{{ request.route_url('panel_list', type='scnd')}}">Second Level Cats</a></li>
+    <li><a href="{{ request.route_url('panel_list', type='offrs')}}">Offers</a></li>
+  </ul>
+  <h2><a href="{{ request.route_url('panel_auth_out')}}">Logout</h2></a>
+  </div>
+</div>
+{% endblock content %}

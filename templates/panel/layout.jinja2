@@ -8,7 +8,7 @@
     <meta name="author" content="Pylons Project">
     <link rel="shortcut icon" href="{{request.static_url('goutse:static/pyramid-16x16.png')}}">
 
-    <title>Alchemy Scaffold for The Pyramid Web Framework</title>
+    <title>Admin Side</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
@@ -27,9 +27,46 @@
 
     <div class="starter-template">
       <div class="container">
+        {% if request.path_url is not equalto request.route_url('panel_auth_form') %}
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li 
+                {% if request.path_url is equalto request.route_url('panel_index') %}
+                class="active"
+                {% endif %}>
+                <a href="{{request.route_url('panel_index')}}">Editor Home</a>
+                </li>
+                <li 
+                {% if request.path_url is equalto request.route_url('panel_list', type='mes') %}
+                class="active"
+                {% endif %}>
+                <a href="{{request.route_url('panel_list', type='mes')}}">Messages</a>
+                </li>
+                <li 
+                {% if request.path_url is equalto request.route_url('panel_list', type='frst') %}
+                class="active"
+                {% endif %}>
+                <a href="{{request.route_url('panel_list', type='frst')}}">First Level Cats</a>
+                </li>
+                <li 
+                {% if request.path_url is equalto request.route_url('panel_list', type='scnd') %}
+                class="active"
+                {% endif %}>
+                <a href="{{request.route_url('panel_list', type='scnd')}}">Second Level Cats</a>
+                </li>
+                <li 
+                {% if request.path_url is equalto request.route_url('panel_list', type='offrs') %}
+                class="active"
+                {% endif %}>
+                <a href="{{request.route_url('panel_list', type='offrs')}}">Offers</a>
+                </li>
+            </ul>    
+        </nav>
+        {% endif %}
         <div class="row">
           <div class="col-md-2">
             <img class="logo img-responsive" src="{{request.static_url('goutse:static/pyramid.png')}}" alt="pyramid web framework">
+           
           </div>
           <div class="col-md-10">
             {% block content %}
@@ -50,7 +87,7 @@
         </div>
         <div class="row">
           <div class="copyright">
-            Copyright &copy; Pylons Project
+            Admin Side
           </div>
         </div>
       </div>
